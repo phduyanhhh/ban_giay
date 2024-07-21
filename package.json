@@ -17,6 +17,7 @@
   "homepage": "https://github.com/phduyanhhh/ban_giay#readme",
   "description": "",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
   }
 }
