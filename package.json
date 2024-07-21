@@ -1,0 +1,22 @@
+{
+  "name": "be_ban_giay",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phduyanhhh/ban_giay.git"
+  },
+  "author": "duy anh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phduyanhhh/ban_giay/issues"
+  },
+  "homepage": "https://github.com/phduyanhhh/ban_giay#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
