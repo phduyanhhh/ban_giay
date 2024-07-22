@@ -1,14 +1,14 @@
 import {
-    addProductAsync,
-    allProductAsync,
-    anProductAsync,
-    deleteProductAsync,
-    updateProductAsync
-} from '../../services/product.service.js';
+    addClassifyAsync,
+    allClassifyAsync,
+    anClassifyAsync,
+    deleteClassifyAsync,
+    updateClassifyAsync
+} from '../../services/classify.service.js';
 
-export const addProduct = async (req, res) => {
+export const addClassify = async (req, res) => {
     try {
-        const result = await addProductAsync(req.body);
+        const result = await addClassifyAsync(req.body);
         res.status(200).json({
             status: true,
             data: result
@@ -21,9 +21,9 @@ export const addProduct = async (req, res) => {
     }
 };
 
-export const allProduct = async (req, res) => {
+export const allClassify = async (req, res) => {
     try {
-        const result = await allProductAsync();
+        const result = await allClassifyAsync();
         res.status(200).json({
             status: true,
             data: result
@@ -36,10 +36,9 @@ export const allProduct = async (req, res) => {
     }
 }
 
-export const anProduct = async (req, res) => {
+export const anClassify = async (req, res) => {
     try {
-        console.log(req.params.id);
-        const result = await anProductAsync(req.params.id);
+        const result = await anClassifyAsync(req.params.id);
         res.status(200).json({
             status: true,
             data: result
@@ -52,10 +51,10 @@ export const anProduct = async (req, res) => {
     }
 }
 
-export const updateProduct = async (req, res) => {
+export const updateClassify = async (req, res) => {
     try {
         console.log(req.body);
-        const result = await updateProductAsync(req.body, req.params.id);
+        const result = await updateClassifyAsync(req.body, req.params.id);
         res.status(200).json({
             status: true,
             data: result
@@ -68,9 +67,9 @@ export const updateProduct = async (req, res) => {
     }
 }
 
-export const deleteProduct = async (req, res) => {
+export const deleteClassify = async (req, res) => {
     try {
-        const result = await deleteProductAsync(req.params.id);
+        const result = await deleteClassifyAsync(req.params.id);
         res.status(200).json({
             status: true,
             result: "delete success",

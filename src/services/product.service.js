@@ -29,8 +29,11 @@ export const allProductAsync = async () => {
 
 export const anProductAsync = async (id) => {
     try {
-        const Product = await Product.findById(id);
-        return Product
+        const product = await Product.findById(id);
+        if(!Product) {
+            throw Error("Loi ko thay id")
+        }
+        return product;
     } catch (error) {
         throw error;
     }
@@ -38,9 +41,9 @@ export const anProductAsync = async (id) => {
 
 export const updateProductAsync = async (newData, id) => {
     try {
-        const Product = await Product.findById(id);
+        const product = await Product.findById(id);
         console.log(newData);
-        const updateProduct = await Product.updateOne(newData);
+        const updateProduct = await product.updateOne(newData);
         if(!updateProduct) {
             throw Error("Luu du lieu moi khong thanh cong")
         }
@@ -52,11 +55,11 @@ export const updateProductAsync = async (newData, id) => {
 
 export const deleteProductAsync = async (id) => {
     try {
-        const brandDelete = await Brand.findByIdAndDelete(id);
-        if(!brandDelete) {
+        const productDelete = await Product.findByIdAndDelete(id);
+        if(!productDelete) {
             throw Error("khong xoa duoc");
         }
-        return brandDelete;
+        return productDelete;
     } catch (error) {
         throw error;
     }
