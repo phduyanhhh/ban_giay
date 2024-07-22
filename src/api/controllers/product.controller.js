@@ -1,14 +1,14 @@
 import {
-    addBrandAsync,
-    allBrandAsync,
-    anBrandAsync,
-    deleteBrandAsync,
-    updateBrandAsync
-} from '../../services/brand.service.js';
+    addProductAsync,
+    allProductAsync,
+    anProductAsync,
+    deleteProductAsync,
+    updateProductAsync
+} from '../../services/product.service.js';
 
-export const addBrand = async (req, res) => {
+export const addProduct = async (req, res) => {
     try {
-        const result = await addBrandAsync(req.body);
+        const result = await addProductAsync(req.body);
         res.status(200).json({
             status: true,
             data: result
@@ -21,9 +21,9 @@ export const addBrand = async (req, res) => {
     }
 };
 
-export const allBrand = async (req, res) => {
+export const allProduct = async (req, res) => {
     try {
-        const result = await allBrandAsync();
+        const result = await allProductAsync();
         res.status(200).json({
             status: true,
             data: result
@@ -36,9 +36,9 @@ export const allBrand = async (req, res) => {
     }
 }
 
-export const anBrand = async (req, res) => {
+export const anProduct = async (req, res) => {
     try {
-        const result = await anBrandAsync(req.params.id);
+        const result = await anProductAsync(req.params.id);
         res.status(200).json({
             status: true,
             data: result
@@ -51,10 +51,10 @@ export const anBrand = async (req, res) => {
     }
 }
 
-export const updateBrand = async (req, res) => {
+export const updateProduct = async (req, res) => {
     try {
         console.log(req.body);
-        const result = await updateBrandAsync(req.body, req.params.id);
+        const result = await updateProductAsync(req.body, req.params.id);
         res.status(200).json({
             status: true,
             data: result
@@ -67,9 +67,9 @@ export const updateBrand = async (req, res) => {
     }
 }
 
-export const deleteBrand = async (req, res) => {
+export const deleteProduct = async (req, res) => {
     try {
-        const result = await deleteBrandAsync(req.params.id);
+        const result = await deleteProductAsync(req.params.id);
         res.status(200).json({
             status: true,
             result: "delete success",
