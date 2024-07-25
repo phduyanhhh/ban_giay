@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import slug from "mongoose-slug-updater";
+mongoose.plugin(slug);
 const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
@@ -15,6 +17,11 @@ const ProductSchema = new Schema({
     brand_id: {
         type: Schema.Types.ObjectId,
         ref: 'Brand'
+    },
+    slug: {
+        type: String,
+        slug: 'name',
+        unique: true
     }}, {
         timestamps: true
     })

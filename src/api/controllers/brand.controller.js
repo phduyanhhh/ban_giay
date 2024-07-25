@@ -38,7 +38,7 @@ export const allBrand = async (req, res) => {
 
 export const anBrand = async (req, res) => {
     try {
-        const result = await anBrandAsync(req.params.id);
+        const result = await anBrandAsync(req.params.slug);
         res.status(200).json({
             status: true,
             data: result
@@ -54,7 +54,7 @@ export const anBrand = async (req, res) => {
 export const updateBrand = async (req, res) => {
     try {
         console.log(req.body);
-        const result = await updateBrandAsync(req.body, req.params.id);
+        const result = await updateBrandAsync(req.body, req.params.slug);
         res.status(200).json({
             status: true,
             data: result
@@ -69,7 +69,7 @@ export const updateBrand = async (req, res) => {
 
 export const deleteBrand = async (req, res) => {
     try {
-        const result = await deleteBrandAsync(req.params.id);
+        const result = await deleteBrandAsync(req.params.slug);
         res.status(200).json({
             status: true,
             result: "delete success",

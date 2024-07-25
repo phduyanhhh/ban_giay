@@ -9,14 +9,14 @@ import {
 } from '../controllers/brand.controller.js';
 
 // Add Brand
-router.post('/add_brand', addBrand);
+router.post('/add', addBrand);
 // All Brand
-router.get('/all_brand', allBrand);
+router.get('/all', allBrand);
 // An Brand
-router.get('/an_brand/:id', anBrand);
+router.get('/:slug', anBrand);
 // Update Brand
-router.put('/update_brand/:id', updateBrand);
+router.put('/update/:slug', updateBrand);
 // Delete Brand
-router.delete('/delete_brand/:id', deleteBrand);
+router.delete('/delete/:slug', deleteBrand);
 
 export default router;

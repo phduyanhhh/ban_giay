@@ -27,18 +27,18 @@ export const allClassifyAsync = async () => {
     }
 };
 
-export const anClassifyAsync = async (id) => {
+export const anClassifyAsync = async (slug) => {
     try {
-        const classify = await Classify.findById(id);
+        const classify = await Classify.findOne({slug: slug});
         return classify
     } catch (error) {
         throw error;
     }
 }
 
-export const updateClassifyAsync = async (newData, id) => {
+export const updateClassifyAsync = async (newData, slug) => {
     try {
-        const classify = await Classify.findById(id);
+        const classify = await Classify.findOne({slug: slug});
         console.log(newData);
         const updateClassify = await classify.updateOne(newData);
         if(!updateClassify) {
@@ -50,9 +50,9 @@ export const updateClassifyAsync = async (newData, id) => {
     }
 }
 
-export const deleteClassifyAsync = async (id) => {
+export const deleteClassifyAsync = async (slug) => {
     try {
-        const classifyDelete = await Classify.findByIdAndDelete(id);
+        const classifyDelete = await Classify.findOneAndDelete({slug: slug});
         if(!classifyDelete) {
             throw Error("khong xoa duoc");
         }

@@ -9,14 +9,14 @@ import {
 } from '../controllers/product.controller.js';
 
 // Add Product
-router.post('/add_product', addProduct);
+router.post('/add', addProduct);
 // All Product
-router.get('/all_product', allProduct);
+router.get('/all', allProduct);
 // An Product
-router.get('/an_product/:id', anProduct);
+router.get('/:slug', anProduct);
 // Update Product
-router.put('/update_product/:id', updateProduct);
+router.put('/update/:slug', updateProduct);
 // Delete Product
-router.delete('/delete_product/:id', deleteProduct);
+router.delete('/delete/:slug', deleteProduct);
 
 export default router;

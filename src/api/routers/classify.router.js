@@ -9,14 +9,14 @@ import {
 } from '../controllers/classify.controller.js';
 
 // Add Classify
-router.post('/add_classify', addClassify);
+router.post('/add', addClassify);
 // All Classify
-router.get('/all_classify', allClassify);
+router.get('/all', allClassify);
 // An Classify
-router.get('/an_classify/:id', anClassify);
+router.get('/:slug', anClassify);
 // Update Classify
-router.put('/update_classify/:id', updateClassify);
+router.put('/update/:slug', updateClassify);
 // Delete Classify
-router.delete('/delete_classify/:id', deleteClassify);
+router.delete('/delete/:slug', deleteClassify);
 
 export default router;

@@ -38,7 +38,7 @@ export const allClassify = async (req, res) => {
 
 export const anClassify = async (req, res) => {
     try {
-        const result = await anClassifyAsync(req.params.id);
+        const result = await anClassifyAsync(req.params.slug);
         res.status(200).json({
             status: true,
             data: result
@@ -54,7 +54,7 @@ export const anClassify = async (req, res) => {
 export const updateClassify = async (req, res) => {
     try {
         console.log(req.body);
-        const result = await updateClassifyAsync(req.body, req.params.id);
+        const result = await updateClassifyAsync(req.body, req.params.slug);
         res.status(200).json({
             status: true,
             data: result
@@ -69,7 +69,7 @@ export const updateClassify = async (req, res) => {
 
 export const deleteClassify = async (req, res) => {
     try {
-        const result = await deleteClassifyAsync(req.params.id);
+        const result = await deleteClassifyAsync(req.params.slug);
         res.status(200).json({
             status: true,
             result: "delete success",

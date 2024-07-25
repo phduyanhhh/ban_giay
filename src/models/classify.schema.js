@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import slug from "mongoose-slug-updater";
+mongoose.plugin(slug);
 const Schema = mongoose.Schema;
 
 const ClassifySchema = new Schema({
@@ -11,6 +13,11 @@ const ClassifySchema = new Schema({
     description: {
         type: String,
         maxLength: 255
+    },
+    slug: {
+        type: String,
+        slug: 'name',
+        unique: true
     }}, {
         timestamps: true
     });

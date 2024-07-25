@@ -27,9 +27,9 @@ export const allProductAsync = async () => {
     }
 };
 
-export const anProductAsync = async (id) => {
+export const anProductAsync = async (slug) => {
     try {
-        const product = await Product.findById(id);
+        const product = await Product.findOne({slug: slug});
         if(!Product) {
             throw Error("Loi ko thay id")
         }
@@ -39,9 +39,9 @@ export const anProductAsync = async (id) => {
     }
 }
 
-export const updateProductAsync = async (newData, id) => {
+export const updateProductAsync = async (newData, slug) => {
     try {
-        const product = await Product.findById(id);
+        const product = await Product.findOne({slug: slug});
         console.log(newData);
         const updateProduct = await product.updateOne(newData);
         if(!updateProduct) {
@@ -53,9 +53,9 @@ export const updateProductAsync = async (newData, id) => {
     }
 }
 
-export const deleteProductAsync = async (id) => {
+export const deleteProductAsync = async (slug) => {
     try {
-        const productDelete = await Product.findByIdAndDelete(id);
+        const productDelete = await Product.findOneAndDelete({slug: slug});
         if(!productDelete) {
             throw Error("khong xoa duoc");
         }

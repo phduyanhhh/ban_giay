@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import slug from "mongoose-slug-updater";
+mongoose.plugin(slug);
 const Schema = mongoose.Schema;
 
 const WarehouseSchema = new Schema({
@@ -25,7 +27,12 @@ const WarehouseSchema = new Schema({
                 type: Number
             }
         }
-    ]
+    ],
+    slug: {
+        type: String,
+        slug: 'name',
+        unique: true
+    }
 })
 
 const Warehouse = mongoose.model("Warehouse", WarehouseSchema);

@@ -27,18 +27,19 @@ export const allBrandAsync = async () => {
     }
 };
 
-export const anBrandAsync = async (id) => {
+export const anBrandAsync = async (slug) => {
     try {
-        const brand = await Brand.findById(id);
+        console.log(slug);
+        const brand = await Brand.findOne({slug: slug});
         return brand
     } catch (error) {
         throw error;
     }
 }
 
-export const updateBrandAsync = async (newData, id) => {
+export const updateBrandAsync = async (newData, slug) => {
     try {
-        const brand = await Brand.findById(id);
+        const brand = await Brand.findOne({slug: slug});
         console.log(newData);
         const updateBrand = await brand.updateOne(newData);
         if(!updateBrand) {
@@ -50,9 +51,9 @@ export const updateBrandAsync = async (newData, id) => {
     }
 }
 
-export const deleteBrandAsync = async (id) => {
+export const deleteBrandAsync = async (slug) => {
     try {
-        const brandDelete = await Brand.findByIdAndDelete(id);
+        const brandDelete = await Brand.findOneAndDelete({slug: slug});
         if(!brandDelete) {
             throw Error("khong xoa duoc");
         }

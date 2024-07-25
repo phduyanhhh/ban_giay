@@ -9,7 +9,7 @@ export const addWarehouseAsync = async (request) => {
         objectType.size = request.size
         objectType.quanlity = request.quanlity
         
-        // existingProductOfWarehpuse
+        // existingProductOfWarehpuse TIM SAN PHAM TRONG KHO HANG
         const existingProductOfWarehouse = await Warehouse.findOne({'product_id': request.product_id})
         if(!existingProductOfWarehouse) {
             const newWarehouse = new Warehouse({
@@ -19,34 +19,30 @@ export const addWarehouseAsync = async (request) => {
             const result = newWarehouse.save();
             return result
         }
-        // if(request.size===existingProductOfWarehouse.type.size)
-        // console.log();
         const arrayTypeWarehouse = existingProductOfWarehouse.type
-        // console.log(arrayTypeWarehouse);
 
+        // vong lap luu tat ca  size
+        const sizes = []
         for (let i = 0; i < arrayTypeWarehouse.length; i++) {
-            const sizes = []
-            console.log("fcds");
-            const size = arrayTypeWarehouse[i].size;
-            console.log(size);
-            await sizes.push(size)
             console.log(sizes);
+            sizes.push(arrayTypeWarehouse[i].size)
         }
 
-        console.log(sizes.includes(request.size));
-        
-
         for (let i = 0; i < arrayTypeWarehouse.length; i++) {
-            console.log(arrayTypeWarehouse[i]);
-            
 
             if(arrayTypeWarehouse[i].size===request.size && arrayTypeWarehouse[i].classify_id==request.classify_id) {
-                objectType.quanlity = request.quanlity + arrayTypeWarehouse[i].quanlity;
+                objectType.quanlity = await request.quanlity + arrayTypeWarehouse[i].quanlity;
                 // arrayTypeWarehouse.
                 arrayTypeWarehouse[i] = objectType;
                 console.log("fdsfsdgddddddddddd >>>>>>>>>", arrayTypeWarehouse);
                 break;
             }
+        }
+
+        // CHECK SIZE DE TAO SIZE MOI TRONG ARRAY
+        if(!sizes.includes(request.size)) {
+            arrayTypeWarehouse.push(objectType);
+            console.log("fdsfsdfsdfsd");
         }
 
         console.log("objject type", arrayTypeWarehouse);
@@ -67,6 +63,15 @@ export const allWarehouseAsync = async () => {
     try {
         const result = await Warehouse.find();
         return result;  
+    } catch (error) {
+        throw error
+    }
+}
+
+export const anWarehouseAsync = async (slug) => {
+    try {
+        const result = await Warehouse.findOne(slug);
+        return result
     } catch (error) {
         throw error
     }
