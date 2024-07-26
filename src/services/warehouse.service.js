@@ -70,7 +70,7 @@ export const allWarehouseAsync = async () => {
 
 export const anWarehouseAsync = async (slug) => {
     try {
-        const result = await Warehouse.findOne(slug);
+        const result = await Warehouse.findOne({slug: slug});
         return result
     } catch (error) {
         throw error
