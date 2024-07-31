@@ -50,7 +50,7 @@ export const addWarehouseAsync = async (request) => {
         // await arrayTypeWarehouse.push(objectType);
         const result = await existingProductOfWarehouse.updateOne({"type": arrayTypeWarehouse})
         if(!result) {
-            throw Error('Chua duoc luu')
+            throw Error('Chua duoc luu');
         }
         return arrayTypeWarehouse;
     } catch (error) {
@@ -76,3 +76,7 @@ export const anWarehouseAsync = async (slug) => {
         throw error
     }
 }
+
+// export const updateWarehouseAsync = async (slug) => {
+    
+// }

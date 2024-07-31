@@ -15,7 +15,7 @@ export const addWarehouse = async (req, res) => {
         res.status(400).json({
             status: 400,
             error: error
-        })        
+        })
     }
 }
 
@@ -30,7 +30,7 @@ export const allWarehouse = async (req, res) => {
         res.status(400).json({
             status: 400,
             error: error
-        })  
+        })
     }
 }
 
@@ -48,3 +48,11 @@ export const anWarehouse = async (req, res) => {
         })  
     }
 }
+
+// export const updateWarehouse = async (req, res) => {
+//     try {
+        
+//     } catch (error) {
+        
+//     }
+// }
