@@ -8,7 +8,10 @@ import {
 
 export const addProduct = async (req, res) => {
     try {
-        const result = await addProductAsync(req.body);
+        console.log(req.files);
+        console.log(req.body);
+        
+        const result = await addProductAsync(req.body, req.files);
         res.status(200).json({
             status: true,
             data: result
@@ -54,7 +57,7 @@ export const anProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {
     try {
         console.log(req.body);
-        const result = await updateProductAsync(req.body, req.params.slug);
+        const result = await updateProductAsync(req.body, req.files, req.params.slug);
         res.status(200).json({
             status: true,
             data: result

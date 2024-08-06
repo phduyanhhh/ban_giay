@@ -14,6 +14,16 @@ const ProductSchema = new Schema({
         type: String,
         maxLength: 255
     },
+    avatar: {
+        type: String
+    },
+    images: [
+        {
+            url: {
+                type: String
+            }
+        }
+    ],
     brand_id: {
         type: Schema.Types.ObjectId,
         ref: 'Brand'

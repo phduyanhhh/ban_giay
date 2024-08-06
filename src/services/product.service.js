@@ -1,15 +1,29 @@
 import Product from "../models/product.schema.js";
 
 //
-export const addProductAsync = async (request) => {
+export const addProductAsync = async (request, images) => {
     try {
-        console.log(request);
-        const newProduct = new Product(request);
-        const result = await newProduct.save();
+        const avatar = images['avatar'][0].path
+        // chi tiet anh
+        let allImages = []
+        images['images'].forEach(image => {
+            console.log(image.path);
+            const objectImage = {}
+            objectImage.url = image.path
+            allImages.push(objectImage)    
+        });
+        const newData = new Product({
+            name: request.name,
+            description: request.description,
+            avatar: images['avatar'][0].path,
+            images: allImages,
+            brand_id: request.brand_id
+        })
+        const result = await newData.save();
         if(!result) {
-            throw Error("Chua luu duoc", request)
+            throw Error("Khong luu duoc")
         }
-        return result
+        return newData;
     } catch (error) {
         throw error
     }
@@ -30,7 +44,7 @@ export const allProductAsync = async () => {
 export const anProductAsync = async (slug) => {
     try {
         const product = await Product.findOne({slug: slug});
-        if(!Product) {
+        if(!product) {
             throw Error("Loi ko thay id")
         }
         return product;
