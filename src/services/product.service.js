@@ -67,6 +67,26 @@ export const updateProductAsync = async (newData, slug) => {
     }
 }
 
+// update avatar
+export const updateAvatarAsync = async (newAvatar, slug) => {
+    try {
+        console.log(">>>", newAvatar);
+        const existingProduct = await Product.findOne({slug: slug});
+        const result = await existingProduct.updateOne({$set: {avatar: newAvatar.path}})
+        return result
+    } catch (error) {
+        throw error;
+    }
+}
+//update images
+export const updateImageAsync = async (newImage, slug) => {
+    try {
+        console.log(newImage);
+    } catch (error) {
+        throw error
+    }
+}
+
 export const deleteProductAsync = async (slug) => {
     try {
         const productDelete = await Product.findOneAndDelete({slug: slug});

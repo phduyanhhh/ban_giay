@@ -6,7 +6,9 @@ import {
     allProduct,
     anProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    updateAvatar,
+    updateImage
 } from '../controllers/product.controller.js';
 
 const multipleUploadProduct = upload.fields([
@@ -24,7 +26,8 @@ router.get('/:slug', anProduct);
 router.put('/update/:slug', updateProduct);
 // Delete Product
 router.delete('/delete/:slug', deleteProduct);
-//
-// router.post('/add/:slug', addImage);
-
+// Update avatar
+router.put('/update-avatar/:slug', upload.single('avatar'), updateAvatar);
+// Update Images
+router.put('/update-image/:slug', multipleUploadProduct, updateImage)
 export default router;
