@@ -82,6 +82,15 @@ export const updateAvatarAsync = async (newAvatar, slug) => {
 export const updateImageAsync = async (newImage, slug) => {
     try {
         console.log(newImage);
+        let allImages = [];
+        newImage.forEach(image => {
+            const objectImage = {}
+            objectImage.url = image.path
+            allImages.push(objectImage)
+        });
+        const existingProduct = Product.findOne({slug: slug});
+        const result = existingProduct.updateOne({$set: {images: allImages}})
+        return result
     } catch (error) {
         throw error
     }

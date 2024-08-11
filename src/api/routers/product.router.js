@@ -29,5 +29,6 @@ router.delete('/delete/:slug', deleteProduct);
 // Update avatar
 router.put('/update-avatar/:slug', upload.single('avatar'), updateAvatar);
 // Update Images
-router.put('/update-image/:slug', multipleUploadProduct, updateImage)
+router.put('/update-image/:slug', upload.array('images', 10), updateImage)
+
 export default router;

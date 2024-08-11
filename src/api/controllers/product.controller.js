@@ -4,7 +4,8 @@ import {
     anProductAsync,
     deleteProductAsync,
     updateProductAsync,
-    updateAvatarAsync
+    updateAvatarAsync,
+    updateImageAsync
 } from '../../services/product.service.js';
 
 export const addProduct = async (req, res) => {
@@ -107,7 +108,12 @@ export const updateAvatar = async (req, res) => {
 
 export const updateImage = async (req, res) => {
     try {
-        
+        const result = await updateImageAsync(req.files, req.params.slug);
+        res.status(200).json({
+            status: true,
+            result: "update image success",
+            data: result
+        })
     } catch (error) {
         res.status(400).json({
             status: false,
