@@ -19,6 +19,7 @@
   "homepage": "https://github.com/phduyanhhh/ban_giay#readme",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cloudinary": "^1.21.0",
     "cookies-parser": "^1.2.0",

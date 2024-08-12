@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const Schema = new mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const PremissionSchema = new Schema({
     role_id: {
