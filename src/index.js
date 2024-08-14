@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import db from './config/db.js';
 import apiRouters from './api/index.js';
 import multer from 'multer';
+import cookieParser from 'cookie-parser';
 
 const upload = multer({ dest: 'public/images' });
 
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 3000
 
 const app = express();
 
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 

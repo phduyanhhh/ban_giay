@@ -1,6 +1,7 @@
 import Account from "../models/account.schema.js";
 import bcrypt from "bcrypt";
 
+
 export const registerAsync = async (request) => {
     try {
         // validate email
@@ -33,3 +34,23 @@ export const registerAsync = async (request) => {
         throw error
     }
 };
+
+export const loginAsync = async (request) => {
+    try {
+        const email = request.email;
+        const password = request.password;
+        // existing email
+        const existingEmail = await Account.findOne({email: email});
+        if(!existingEmail) {
+            throw Error('Khong co tai khoan');
+        }
+        console.log(">>>", existingEmail);
+        const checkPassword = await bcrypt.compare(password, existingEmail.password);
+        if(!checkPassword) {
+            throw Error("Sai mat khau")
+        }
+        return existingEmail
+    } catch (error) {
+        throw error
+    }
+}
