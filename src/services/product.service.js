@@ -15,6 +15,8 @@ export const addProductAsync = async (request, images) => {
         const newData = new Product({
             name: request.name,
             description: request.description,
+            price: request.price,
+            discount: request.discount,
             avatar: images['avatar'][0].path,
             images: allImages,
             brand_id: request.brand_id
@@ -107,3 +109,4 @@ export const deleteProductAsync = async (slug) => {
         throw error;
     }
 }
+

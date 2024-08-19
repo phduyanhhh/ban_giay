@@ -5,8 +5,10 @@ import db from './config/db.js';
 import apiRouters from './api/index.js';
 import multer from 'multer';
 import cookieParser from 'cookie-parser';
+import cors from 'cors'
 
 const upload = multer({ dest: 'public/images' });
+
 
 db.connect();
 dotenv.config();
@@ -15,6 +17,7 @@ const PORT = process.env.PORT || 3000
 
 const app = express();
 
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

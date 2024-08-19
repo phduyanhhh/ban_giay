@@ -15,7 +15,6 @@ const multipleUploadProduct = upload.fields([
     {name: 'avatar', maxCount : 1},
     {name: 'images', maxCount : 10}
 ])
-
 // Add Product
 router.post('/add', multipleUploadProduct, addProduct);
 // All Product

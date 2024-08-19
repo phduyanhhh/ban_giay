@@ -1,3 +1,4 @@
+import { request } from "express";
 import Account from "../models/account.schema.js";
 import bcrypt from "bcrypt";
 
@@ -12,8 +13,12 @@ export const registerAsync = async (request) => {
         if(existingEmail && existingPhone) {
             throw Error("Email hoac Password ko ton tai")
         }
-
+        const rePassword = request.re_password;
         const password = request.password;
+
+        if(rePassword!=password) {
+            throw Error("Mat khau nhap lai ko dung")
+        }
         //
         const salt = await bcrypt.genSalt(10);
         const hashed = await bcrypt.hash(password, salt);
@@ -50,6 +55,15 @@ export const loginAsync = async (request) => {
             throw Error("Sai mat khau")
         }
         return existingEmail
+    } catch (error) {
+        throw error
+    }
+}
+
+export const allAccountAsync = async (request) => {
+    try {
+        const result = await Account.find();
+        return result;
     } catch (error) {
         throw error
     }

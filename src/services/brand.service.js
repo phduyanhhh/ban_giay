@@ -1,5 +1,5 @@
 import Brand from "../models/brand.schema.js";
-
+import Product from "../models/product.schema.js";
 //
 export const addBrandAsync = async (request) => {
     try {
@@ -30,8 +30,9 @@ export const allBrandAsync = async () => {
 export const anBrandAsync = async (slug) => {
     try {
         console.log(slug);
-        const brand = await Brand.findOne({slug: slug});
-        return brand
+        const exingtingBrand = await Brand.findOne({slug: slug});
+        const existingProduct = await Product.find({brand_id: exingtingBrand.id});
+        return existingProduct
     } catch (error) {
         throw error;
     }

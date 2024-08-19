@@ -1,3 +1,4 @@
+import { request } from "express";
 import mongoose from "mongoose";
 import slug from "mongoose-slug-updater";
 mongoose.plugin(slug);
@@ -7,15 +8,21 @@ const ProductSchema = new Schema({
     name: {
         type: String,
         maxLength: 255,
-        unique: true,
         required: true
     },
     description: {
-        type: String,
-        maxLength: 255
+        type: String
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    discount: {
+        type: Number
     },
     avatar: {
-        type: String
+        type: String,
+        required: true
     },
     images: [
         {

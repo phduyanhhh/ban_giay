@@ -1,6 +1,7 @@
 import {
     registerAsync,
-    loginAsync
+    loginAsync,
+    allAccountAsync
 } from '../../services/account.service.js';
 
 import jwt from "jsonwebtoken";
@@ -44,6 +45,21 @@ export const login = async (req, res) => {
             result: "Login success",
             data: result,
             access_token: accessToken
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: false,
+            error: error.message
+        })
+    }
+}
+
+export const allAccount = async (req, res) => {
+    try {
+        const all = await allAccountAsync();
+        res.status(200).json({
+            status: true,
+            data: all
         })
     } catch (error) {
         res.status(400).json({
