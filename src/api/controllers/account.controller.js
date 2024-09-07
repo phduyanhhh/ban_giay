@@ -39,7 +39,6 @@ export const login = async (req, res) => {
             accessToken,
             { httpOnly: true }
         )
-        console.log(accessToken);
         res.status(200).json({
             status: true,
             result: "Login success",

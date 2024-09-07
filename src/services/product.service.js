@@ -110,3 +110,10 @@ export const deleteProductAsync = async (slug) => {
     }
 }
 
+export const paginatorPageAsync = async (data) => {
+    try {
+        console.log(data);
+    } catch (error) {
+        throw error;
+    }
+}

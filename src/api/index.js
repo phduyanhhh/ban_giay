@@ -7,9 +7,11 @@ import RoleRouter from './routers/role.router.js';
 import PathRouter from './routers/path.router.js';
 import PremissionRouter from './routers/premission.router.js';
 import AccountRouter from './routers/account.router.js';
+import { checkUser } from '../middlewares/auth.middleware.js';
 
 const router = express.Router();
 
+// router.all('*', checkUser);
 router.use('/brand', BrandRouter);
 router.use('/product', ProductRouter);
 router.use('/classify', ClassifyRouter);

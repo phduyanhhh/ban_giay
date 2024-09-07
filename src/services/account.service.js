@@ -1,10 +1,12 @@
 import { request } from "express";
 import Account from "../models/account.schema.js";
+import Role from "../models/role.schema.js";
 import bcrypt from "bcrypt";
 
 
 export const registerAsync = async (request) => {
     try {
+        const roleCustomer = await Role.findOne({name: 'Customer'})
         // validate email
         const email = request.email
         const existingEmail = await Account.findOne({email: email});
@@ -30,7 +32,7 @@ export const registerAsync = async (request) => {
             last_name: request.last_name,
             birthday: request.birthday,
             address: request.address,
-            role_id: request.role_id
+            role_id: roleCustomer.id
         })
         const result = await newAccount.save();
         console.log(">>>", result)

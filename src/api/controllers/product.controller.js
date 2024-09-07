@@ -5,7 +5,8 @@ import {
     deleteProductAsync,
     updateProductAsync,
     updateAvatarAsync,
-    updateImageAsync
+    updateImageAsync,
+    paginatorPageAsync
 } from '../../services/product.service.js';
 
 export const addProduct = async (req, res) => {
@@ -112,6 +113,22 @@ export const updateImage = async (req, res) => {
         res.status(200).json({
             status: true,
             result: "update image success",
+            data: result
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: false,
+            error: error
+        })
+    }
+}
+
+export const paginatorPage = async (req, res) => {
+    try {
+        console.log('dss');
+        const result = await paginatorPageAsync(req.params.page);
+        res.status(200).json({
+            status: true,
             data: result
         })
     } catch (error) {

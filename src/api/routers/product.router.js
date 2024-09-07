@@ -8,7 +8,8 @@ import {
     deleteProduct,
     updateProduct,
     updateAvatar,
-    updateImage
+    updateImage,
+    paginatorPage
 } from '../controllers/product.controller.js';
 
 const multipleUploadProduct = upload.fields([
@@ -28,6 +29,8 @@ router.delete('/delete/:slug', deleteProduct);
 // Update avatar
 router.put('/update-avatar/:slug', upload.single('avatar'), updateAvatar);
 // Update Images
-router.put('/update-image/:slug', upload.array('images', 10), updateImage)
+router.put('/update-image/:slug', upload.array('images', 10), updateImage);
+// PAGINATOR 
+// router.get('      /:page', paginatorPage);
 
 export default router;
