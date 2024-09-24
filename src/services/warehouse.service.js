@@ -68,9 +68,10 @@ export const allWarehouseAsync = async () => {
     }
 }
 
-export const anWarehouseAsync = async (slug) => {
+export const anWarehouseAsync = async (id) => {
     try {
-        const result = await Warehouse.findOne({slug: slug});
+        const result = await Warehouse.findOne({product_id: id}).populate('product_id');
+        console.log(result);
         return result
     } catch (error) {
         throw error

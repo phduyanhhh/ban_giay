@@ -9,7 +9,7 @@ export const addClassifyAsync = async (request) => {
         if(!result) {
             throw Error("Chua luu duoc", request)
         }
-        return result
+        return result;
     } catch (error) {
         throw error
     }

@@ -36,7 +36,7 @@ export const allWarehouse = async (req, res) => {
 
 export const anWarehouse = async (req, res) => {
     try {
-        const result = await anWarehouseAsync(req.params.slug);
+        const result = await anWarehouseAsync(req.params.id);
         res.status(200).json({
             status: 200,
             data: result
